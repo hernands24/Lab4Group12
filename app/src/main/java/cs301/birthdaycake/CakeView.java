@@ -69,10 +69,10 @@ public class CakeView extends SurfaceView {
      * the position of the bottom left corner of the candle
      */
     public void drawCandle(Canvas canvas, float left, float bottom) {
-        canvas.drawRect(left, bottom - candleHeight, left + candleWidth, bottom, candlePaint);
+        canvas.drawRect((left-300), bottom - candleHeight, left - 300 + candleWidth, bottom, candlePaint);
 
         //draw the outer flame
-        float flameCenterX = left + candleWidth/2;
+        float flameCenterX = (left-300) + candleWidth/2;
         float flameCenterY = bottom - wickHeight - candleHeight - outerFlameRadius/3;
         canvas.drawCircle(flameCenterX, flameCenterY, outerFlameRadius, outerFlamePaint);
 
@@ -83,7 +83,25 @@ public class CakeView extends SurfaceView {
         //draw the wick
         float wickLeft = left + candleWidth/2 - wickWidth/2;
         float wickTop = bottom - wickHeight - candleHeight;
-        canvas.drawRect(wickLeft, wickTop, wickLeft + wickWidth, wickTop + wickHeight, wickPaint);
+        canvas.drawRect(wickLeft - 300, wickTop, wickLeft + wickWidth - 300, wickTop + wickHeight, wickPaint);
+
+
+        //second candle ---------------------------------------------------------
+        canvas.drawRect((left+300), bottom - candleHeight, left + 300 + candleWidth, bottom, candlePaint);
+
+        //draw the outer flame
+        float flameTwoCenterX = (left+300) + candleWidth/2;
+        float flameTwoCenterY = bottom - wickHeight - candleHeight - outerFlameRadius/3;
+        canvas.drawCircle(flameTwoCenterX, flameTwoCenterY, outerFlameRadius, outerFlamePaint);
+
+        //draw the inner flame
+        flameTwoCenterY += outerFlameRadius/3;
+        canvas.drawCircle(flameTwoCenterX, flameTwoCenterY, innerFlameRadius, innerFlamePaint);
+
+        //draw the wick
+        float wickTwoLeft = left + candleWidth/2 - wickWidth/2;
+        float wickTwoTop = bottom - wickHeight - candleHeight;
+        canvas.drawRect(wickTwoLeft + 300, wickTwoTop, wickTwoLeft + wickWidth + 300, wickTwoTop + wickHeight, wickPaint);
 
     }
 
