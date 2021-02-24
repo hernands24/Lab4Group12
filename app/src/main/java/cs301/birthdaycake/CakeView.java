@@ -78,14 +78,14 @@ public class CakeView<cakeModel> extends SurfaceView {
 
         if(cakeModel.hasCandles == true) {
             if (cakeModel.candlesLit == false) {
-                canvas.drawRect(left, bottom - candleHeight, left + 4(candleWidth), bottom, candlePaint);
+                canvas.drawRect(left, bottom - candleHeight, left + (4*candleWidth), bottom, candlePaint);
 
                 //draw the wick
                 float wickLeft = left + candleWidth / 2 - wickWidth / 2;
                 float wickTop = bottom - wickHeight - candleHeight;
                 canvas.drawRect(wickLeft, wickTop, wickLeft + wickWidth, wickTop + wickHeight, wickPaint);
             } else {
-                canvas.drawRect(left, bottom - candleHeight, left + 4(candleWidth), bottom, candlePaint);
+                canvas.drawRect(left, bottom - candleHeight, left + (4*candleWidth), bottom, candlePaint);
 
                 //draw the outer flame
                 float flameCenterX = left + candleWidth / 2;
