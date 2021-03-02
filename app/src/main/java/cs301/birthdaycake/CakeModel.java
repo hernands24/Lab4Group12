@@ -7,6 +7,13 @@ public class CakeModel {
     public boolean hasFrosting;
     public boolean hasCandles;
 
+    // hewlett
+    public boolean touch = false;
+    public boolean isBalloon = false;
+    public float sizeX = 400f;
+    public float sizeY = 400f;
+    public float touchY = 400f;
+    public float touchX = 400f;
 
     public CakeModel(){
         candlesLit = true;

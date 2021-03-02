@@ -102,7 +102,22 @@ public class CakeView<cakeModel> extends SurfaceView {
                 canvas.drawRect(wickLeft, wickTop, wickLeft + wickWidth, wickTop + wickHeight, wickPaint);
             }
         }
+    }
 
+    public void drawCoord(Canvas canvas) {
+        Paint coordText = new Paint();
+        coordText.setColor(0xff000000);
+        coordText.setTextSize(200f);
+        canvas.drawText("X: " + cakeModel.touchX + " " + "Y: " + cakeModel.touchY, 400f, 400f, coordText);
+    }
+
+    public void drawBalloon(Canvas canvas) {
+        Paint balloon = new Paint();
+        balloon.setColor(0xff0000ff);
+        Paint string = new Paint();
+        string.setColor(0xff000000);
+        canvas.drawOval(cakeModel.sizeX-25f, cakeModel.sizeY-50f, cakeModel.sizeX+25f, cakeModel.sizeY+50f, balloon);
+        canvas.drawLine(cakeModel.sizeX, cakeModel.sizeY+50f, cakeModel.sizeX, cakeModel.sizeY+150f, string);
     }
 
     /**
@@ -142,6 +157,14 @@ public class CakeView<cakeModel> extends SurfaceView {
         int numCandles = cakeModel.getNumCandles();
         for(int i = 0; i < numCandles; i++) {
             drawCandle(canvas, cakeLeft + cakeWidth / (numCandles) / 2 +(i * (cakeWidth / numCandles)), cakeTop);
+        }
+
+        if (cakeModel.isBalloon) {
+            drawBalloon(canvas);
+        }
+
+        if (cakeModel.touch) {
+            drawCoord(canvas);
         }
 
 
